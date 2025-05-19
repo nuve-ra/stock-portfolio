@@ -51,7 +51,7 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
   const [liveData, setLiveData] = useState<LiveStockData>({});
   //const [historicalData, setHistoricalData] = useState<HistoricalDataMap>({});
   const [selectedSector, setSelectedSector] = useState<string>('All Sectors');
-  const [combinedData, setCombinedData] = useState<CombinedStock[]>([]);
+  //const [combinedData, setCombinedData] = useState<CombinedStock[]>([]);
 useEffect(() => {
   const fetchLiveStockAPIResponse = async () => {
     try {
