@@ -21,9 +21,8 @@ type LiveStockData = {
 // Interface for the component's props
 interface PortfolioTableProps {
   portfolioData: StockHolding[];
-  // stockData: Record<string, unknown>; 
+  stockData?: LiveStockData; 
 }
-
 const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
   const [liveData, setLiveData] = useState<LiveStockData>({});
   const [selectedSector, setSelectedSector] = useState<string>('All Sectors');
@@ -64,7 +63,6 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
       ? portfolioData
       : portfolioData.filter((stock) => stock.sector === selectedSector);
 
-  
   const totalInvestment = filteredPortfolioData.reduce(
     (acc, stock) => acc + stock.purchasePrice * stock.quantity,
     0
@@ -81,6 +79,8 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
           <li className="hover:underline cursor-pointer">Settings</li>
         </ul>
       </nav>
+
+      {/* Sector Filter */}
       <div className="mt-6">
         <label htmlFor="sector-select" className="font-medium text-gray-700 mr-3">
           Filter by Sector:
@@ -132,7 +132,6 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
                 const presentValue = cmp * stock.quantity;
                 const gainLoss = presentValue - investment;
                 const gainClass = gainLoss >= 0 ? 'text-green-600' : 'text-red-600';
-                // const historicalPoints = historicalData[stock.symbol]?.length ?? 0; 
 
                 return (
                   <tr key={stock.symbol} className="hover:bg-yellow-50">
@@ -149,9 +148,8 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
                     </td>
                     <td className="px-4 py-3 text-center">{peRatio}</td>
                     <td className="px-4 py-3 text-center">{latestEarnings}</td>
-                    {/* Removed 'History' column cell */}
-                    {/* <td className="px-4 py-3 text-center">{historicalPoints}</td> */}
-                  </tr>
+                    
+                                      </tr>
                 );
               })}
             </tbody>
@@ -159,7 +157,7 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
         </div>
       </div>
 
-      
+      {/* Mobile Card View */}
       <div className="mt-6 space-y-4 md:hidden">
         {filteredPortfolioData.map((stock) => {
           const investment = stock.purchasePrice * stock.quantity;
@@ -170,7 +168,6 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
           const presentValue = cmp * stock.quantity;
           const gainLoss = presentValue - investment;
           const gainClass = gainLoss >= 0 ? 'text-green-600' : 'text-red-600';
-          // const historicalPoints = historicalData[stock.symbol]?.length ?? 0; 
 
           return (
             <div key={stock.symbol} className="border rounded-xl shadow-lg p-4 bg-white">
@@ -205,7 +202,6 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
               <p>
                 <strong>Latest Earnings:</strong> {latestEarnings}
               </p>
-              {/* <p><strong>History Points:</strong> {historicalPoints}</p> */}
             </div>
           );
         })}
