@@ -135,19 +135,19 @@ const PortfolioTable: React.FC<PortfolioTableProps> = ({ portfolioData }) => {
 
                 return (
                   <tr key={stock.symbol} className="hover:bg-yellow-50">
-                    <td className="px-4 py-3 font-medium">{stock.stockName}</td>
-                    <td className="px-4 py-3 text-center">₹{stock.purchasePrice}</td>
-                    <td className="px-4 py-3 text-center">{stock.quantity}</td>
-                    <td className="px-4 py-3 text-center">₹{investment.toFixed(2)}</td>
-                    <td className="px-4 py-3 text-center">{portfolioPercent}%</td>
-                    <td className="px-4 py-3 text-center">{stock.exchange}</td>
-                    <td className="px-4 py-3 text-center">₹{cmp.toFixed(2)}</td>
-                    <td className="px-4 py-3 text-center">₹{presentValue.toFixed(2)}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black ">{stock.stockName}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black ">₹{stock.purchasePrice}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black ">{stock.quantity}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black ">₹{investment.toFixed(2)}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black">{portfolioPercent}%</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black">{stock.exchange}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black ">₹{cmp.toFixed(2)}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black">₹{presentValue.toFixed(2)}</td>
                     <td className={`px-4 py-3 text-center font-semibold ${gainClass}`}>
                       ₹{gainLoss.toFixed(2)}
                     </td>
-                    <td className="px-4 py-3 text-center">{peRatio}</td>
-                    <td className="px-4 py-3 text-center">{latestEarnings}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black">{peRatio}</td>
+                    <td className="border border-gray-300 rounded px-3 py-2 shadow-sm text-black ">{latestEarnings}</td>
                     
                                       </tr>
                 );
